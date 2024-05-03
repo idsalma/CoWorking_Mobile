@@ -7,12 +7,14 @@ class ToDoItem extends StatelessWidget {
   final ToDo todo;
   final onToDoChanged;
   final onDeleteItem;
+  final onLongPressItem;
 
   const ToDoItem({
     Key? key,
     required this.todo,
     required this.onToDoChanged,
     required this.onDeleteItem,
+    required this.onLongPressItem,
   }) : super(key: key);
 
   @override
@@ -21,8 +23,10 @@ class ToDoItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       child: ListTile(
         onTap: () {
-          // print('Clicked on Todo Item.');
           onToDoChanged(todo);
+        },
+        onLongPress: () {
+          onLongPressItem(todo.id);
         },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -53,7 +57,7 @@ class ToDoItem extends StatelessWidget {
           child: IconButton(
             color: Colors.white,
             iconSize: 18,
-            icon: const Icon(Icons.delete),
+            icon: const Icon(Icons.remove),
             onPressed: () {
               // print('Clicked on delete icon');
               onDeleteItem(todo.id);
