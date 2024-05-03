@@ -2,11 +2,13 @@ class ToDo {
   String? id;
   String? todoText;
   bool isDone;
+  String? status; // TODO, IN PROGRESS, COMPLETED
 
   ToDo({
     required this.id,
     required this.todoText,
     this.isDone = false,
+    this.status = "TODO",
   });
 
   static List<ToDo> todoList() {
